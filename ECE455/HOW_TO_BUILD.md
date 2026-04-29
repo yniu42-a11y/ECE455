@@ -116,6 +116,57 @@ Project root:
 - matrix_keypad.py, lcd_display.py, motor_controller.py, lockbox_controller.py
 - inventory_store.py, history_store.py, password_store.py
 
+## 4.1 How to Connect to the Raspberry Pi
+There are several valid ways to work with this project on the Raspberry Pi.
+
+### Method A: Direct Local Access on the Pi
+Use this when the Pi is connected to a monitor, keyboard, and mouse.
+1. Power on the Raspberry Pi.
+2. Log in at the desktop or console.
+3. Open a terminal.
+4. Change into the project folder.
+    - `cd /home/pi/ECE455`
+5. Run the app or syntax checks from that terminal.
+
+This is the simplest option for first bring-up and hardware debugging.
+
+### Method B: SSH Over Wi-Fi or Ethernet
+Use this when the Pi is on the network and you want to control it from another computer.
+1. Enable SSH on the Raspberry Pi.
+2. Make sure the Pi and your laptop are on the same network.
+3. Find the Pi IP address from the router, desktop network panel, or `hostname -I` on the Pi.
+4. From your laptop, connect with SSH.
+    - Example: `ssh pi@<pi-ip-address>`
+5. Enter the Pi password when prompted.
+6. Navigate to the repository and run commands as needed.
+
+This is the best option if you want to edit files remotely without touching the Pi directly.
+
+### Method C: VNC or Remote Desktop
+Use this when you want the Pi desktop GUI from another machine.
+1. Enable VNC on the Raspberry Pi.
+2. Install a VNC viewer on your computer.
+3. Connect to the Pi using its IP address.
+4. Open the project folder and use the desktop normally.
+
+This is useful if you need the full GUI, not just a terminal.
+
+### Method D: VS Code Remote SSH
+Use this if you want to edit and run the project from VS Code on your computer.
+1. Install the VS Code Remote - SSH extension.
+2. Enable SSH on the Pi.
+3. Connect VS Code to `pi@<pi-ip-address>`.
+4. Open `/home/pi/ECE455` in the remote workspace.
+5. Use the built-in terminal and editor on the remote Pi.
+
+This is usually the most convenient development workflow for code changes.
+
+### What I Used / What You Can Reproduce
+For this project, the most important part is not the exact UI tool, but that you can reliably reach the Pi shell and the `/home/pi/ECE455` folder. Any of the methods above is acceptable as long as it lets you:
+- edit the Python files,
+- run `python main.py`, and
+- run syntax checks such as `python3 -m py_compile ...`.
+
 Recommended setup steps on Raspberry Pi:
 1. Install Python and system updates.
 2. Enable I2C (for LCD) in Raspberry Pi configuration.
